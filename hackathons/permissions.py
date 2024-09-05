@@ -9,5 +9,4 @@ class OrganizerUserPermission(BasePermission):
             return request.user.user_profile.type == "ORGANIZER"
         if request.method == "DELETE":
             return False
-
         return True

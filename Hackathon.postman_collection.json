@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "64d34e57-95c0-4f3c-a18d-c5e6146f72c3",
+		"name": "Hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38154030"
+	},
+	"item": [
+		{
+			"name": "Submission APIs",
+			"item": [
+				{
+					"name": "Submission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b5588a1ff5ec6b6524c993df08f6e2dcd7c396db",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"MohitSub\",\r\n    \"summary\":\"Submission of Hackathon\",\r\n    \"user\": 2,\r\n    \"hackathon\": 3,\r\n    \"submission_link\": \"https://google.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/submissions/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"submissions",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submission Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b5588a1ff5ec6b6524c993df08f6e2dcd7c396db",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/submissions/3/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"submissions",
+								"3",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hackathon",
+			"item": [
+				{
+					"name": "List of Hackathon",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b5588a1ff5ec6b6524c993df08f6e2dcd7c396db",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/hackathons/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"hackathons",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hackathon Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b5588a1ff5ec6b6524c993df08f6e2dcd7c396db",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/hackathons/:hackathon_id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"hackathons",
+								":hackathon_id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "hackathon_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Hackathon",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b5588a1ff5ec6b6524c993df08f6e2dcd7c396db",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Title123",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "default"
+								},
+								{
+									"key": "background_image",
+									"type": "file",
+									"src": "/C:/Users/ranwa/Downloads/python_logo.png"
+								},
+								{
+									"key": "hackathon_image",
+									"type": "file",
+									"src": "/C:/Users/ranwa/Downloads/python_logo.png"
+								},
+								{
+									"key": "submission_type",
+									"value": "file",
+									"type": "default"
+								},
+								{
+									"key": "start_datetime",
+									"value": "2024-09-04T16:00:23Z",
+									"type": "default"
+								},
+								{
+									"key": "end_datetime",
+									"value": "2024-09-14T16:00:23Z",
+									"type": "default"
+								},
+								{
+									"key": "reward_prize",
+									"value": "2000",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/api/hackathons/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"hackathons",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hackathon Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b77e900882572e09c8f96dee48564289acda7ff3",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/api/hackathons/3/register/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"hackathons",
+								"3",
+								"register",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "DOMAIN",
+			"value": "http://localhost:8000",
+			"type": "default"
+		}
+	]
+}

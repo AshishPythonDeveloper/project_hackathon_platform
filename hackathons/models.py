@@ -36,19 +36,26 @@ class Hackathon(models.Model):
         return self.title
 
 
+class HackathonRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hackathon = models.ForeignKey(Hackathon, on_delete=models.CASCADE)
+    registered_at = models.DateTimeField(auto_now_add=True)
+
+
 class Submission(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hackathon = models.ForeignKey(Hackathon, related_name='submissions', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     summary = models.TextField()
-    submission = models.FileField(upload_to='submissions/')
+    submission = models.FileField(upload_to='submissions/', blank=True, null=True)
+    submission_link = models.URLField(blank=True, null=True)
 
     def clean(self):
-        # Add validation to check if the submission type matches the file type
+            # Validate based on hackathon's submission type
         if self.hackathon.submission_type == 'image' and not self.submission.name.lower().endswith(
                 ('.png', '.jpg', '.jpeg')):
             raise ValidationError('Submission must be an image.')
         elif self.hackathon.submission_type == 'file' and not self.submission.name.lower().endswith(('.zip', '.pdf')):
             raise ValidationError('Submission must be a file.')
-        elif self.hackathon.submission_type == 'link' and not self.submission.name.lower().startswith('http'):
-            raise ValidationError('Submission must be a link.')
+        elif self.hackathon.submission_type == 'link' and not self.submission_link:
+            raise ValidationError('Submission must be a valid link.')
