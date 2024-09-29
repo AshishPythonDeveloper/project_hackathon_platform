@@ -15,6 +15,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     type = models.CharField(max_length=50, choices=UserTypeChoices.choices)
 
+    def __str__(self):
+        return self.user.username
+
 
 class Hackathon(models.Model):
     TYPE_CHOICES = [
