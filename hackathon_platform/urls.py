@@ -24,8 +24,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 
-from hackathons.views import HackathonViewSet, SubmissionViewSet
+from hackathons.views import HackathonViewSet, SubmissionViewSet, CustomAuthToken
 
 router = DefaultRouter()
 router.register(r'hackathons', HackathonViewSet)
@@ -34,4 +35,7 @@ router.register(r'submissions', SubmissionViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api-token-auth/', obtain_auth_token),  # DRF's default token auth view,
+    path('api-token-auth/', CustomAuthToken.as_view()),  # Custom token auth view
 ]
+
